@@ -15,7 +15,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #fce4ec 0%, #e1bee7 100%);
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 50%, #ff9a9e 100%);
             min-height: 100vh;
             padding: 10px;
         }
@@ -23,27 +23,47 @@
         .container {
             max-width: 900px;
             margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            box-shadow: 0 25px 80px rgba(255, 154, 158, 0.3);
             overflow: hidden;
+            border: 1px solid rgba(255, 215, 0, 0.2);
         }
 
         .header {
-            background: linear-gradient(135deg, #ec407a 0%, #ab47bc 100%);
+            background: linear-gradient(135deg, #d4af37 0%, #f4c430 50%, #ff6b9d 100%);
             color: white;
             padding: 25px 20px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.2)"/></pattern></defs><rect fill="url(%23dots)" width="100" height="100"/></svg>');
+            opacity: 0.3;
         }
 
         .header h1 {
             font-size: 2em;
             margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
         .header p {
-            opacity: 0.9;
+            opacity: 0.95;
             font-size: 1em;
+            position: relative;
+            z-index: 1;
         }
 
         /* Responsive untuk mobile */
@@ -141,22 +161,44 @@
         }
 
         .btn {
-            background: linear-gradient(135deg, #ec407a 0%, #ab47bc 100%);
+            background: linear-gradient(135deg, #d4af37 0%, #f4c430 50%, #ff6b9d 100%);
             color: white;
             border: none;
             padding: 15px 30px;
             font-size: 1.1em;
-            border-radius: 10px;
+            border-radius: 12px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             width: 100%;
             margin: 10px 0;
             font-weight: 600;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(236, 64, 122, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.6);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
         }
 
         .btn:disabled {
@@ -165,15 +207,33 @@
         }
 
         .btn-secondary {
-            background: linear-gradient(135deg, #7e57c2 0%, #5e35b1 100%);
+            background: linear-gradient(135deg, #ffd1dc 0%, #ffc3d5 50%, #ffb6c1 100%);
+            color: #d4af37;
+            box-shadow: 0 4px 15px rgba(255, 209, 220, 0.4);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 8px 25px rgba(255, 209, 220, 0.6);
         }
 
         .btn-success {
-            background: linear-gradient(135deg, #66bb6a 0%, #43a047 100%);
+            background: linear-gradient(135deg, #ffd700 0%, #ffa500 50%, #ff6b9d 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-success:hover {
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
         }
 
         .btn-danger {
-            background: linear-gradient(135deg, #ef5350 0%, #e53935 100%);
+            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 50%, #c71585 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+        }
+
+        .btn-danger:hover {
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.6);
         }
 
         .input-group {
@@ -189,16 +249,19 @@
 
         .input-group input {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
+            padding: 14px 18px;
+            border: 2px solid #e8e8e8;
+            border-radius: 12px;
             font-size: 1em;
-            transition: border 0.3s;
+            transition: all 0.3s;
+            background: #fafafa;
         }
 
         .input-group input:focus {
             outline: none;
-            border-color: #ec407a;
+            border-color: #d4af37;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
         }
 
         .alert {
@@ -208,33 +271,39 @@
         }
 
         .alert-error {
-            background: #ffebee;
-            color: #c62828;
-            border: 1px solid #ef9a9a;
+            background: linear-gradient(135deg, #ffe5ec 0%, #fff0f3 100%);
+            color: #d32f2f;
+            border: 1px solid #ffcdd2;
         }
 
         .alert-success {
-            background: #e8f5e9;
-            color: #2e7d32;
-            border: 1px solid #a5d6a7;
+            background: linear-gradient(135deg, #fff8e1 0%, #fffbf0 100%);
+            color: #f57c00;
+            border: 1px solid #ffd54f;
         }
 
         .alert-info {
-            background: #e3f2fd;
-            color: #1565c0;
-            border: 1px solid #90caf9;
+            background: linear-gradient(135deg, #fff0f5 0%, #ffe8f0 100%);
+            color: #c2185b;
+            border: 1px solid #f8bbd0;
         }
 
         .feature-box {
-            background: linear-gradient(135deg, #fce4ec 0%, #f3e5f5 100%);
+            background: linear-gradient(135deg, #fff9f0 0%, #fffbf5 100%);
             padding: 20px;
-            border-radius: 12px;
+            border-radius: 16px;
             margin: 20px 0;
+            border: 1px solid #ffe8d0;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.08);
         }
 
         .feature-box h3 {
-            color: #ec407a;
+            background: linear-gradient(135deg, #d4af37 0%, #ff6b9d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 15px;
+            font-size: 1.2em;
         }
 
         .feature-box ul {
@@ -254,23 +323,26 @@
         }
 
         .upload-area {
-            border: 3px dashed #ec407a;
-            border-radius: 12px;
+            border: 3px dashed #f4c430;
+            border-radius: 16px;
             padding: 40px;
             text-align: center;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.4s;
             margin: 20px 0;
+            background: linear-gradient(135deg, #fffef9 0%, #fffdf5 100%);
         }
 
         .upload-area:hover {
-            background: #fce4ec;
-            border-color: #ab47bc;
+            background: linear-gradient(135deg, #fff9e6 0%, #fff5dc 100%);
+            border-color: #d4af37;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.2);
         }
 
         .upload-area i {
             font-size: 3em;
-            color: #ec407a;
+            color: #d4af37;
             margin-bottom: 15px;
         }
 
@@ -301,34 +373,51 @@
         }
 
         .result-card {
-            background: linear-gradient(135deg, #fce4ec 0%, #f3e5f5 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #fff9f5 100%);
             padding: 20px;
-            border-radius: 12px;
+            border-radius: 16px;
             text-align: center;
+            border: 1px solid #ffe8d0;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.1);
+            transition: all 0.3s;
+        }
+
+        .result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
         }
 
         .result-card h4 {
-            color: #666;
+            color: #888;
             font-size: 0.9em;
             margin-bottom: 10px;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .result-card .value {
-            color: #ec407a;
+            background: linear-gradient(135deg, #d4af37 0%, #f4c430 50%, #ff6b9d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             font-size: 1.5em;
             font-weight: bold;
         }
 
         .recommendations {
-            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            background: linear-gradient(135deg, #fff9f0 0%, #fffbf5 100%);
             padding: 25px;
-            border-radius: 12px;
+            border-radius: 16px;
             margin: 30px 0;
+            border: 1px solid #ffe8d0;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.1);
         }
 
         .recommendations h3 {
-            color: #2e7d32;
+            background: linear-gradient(135deg, #d4af37 0%, #ff6b9d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 20px;
         }
 
@@ -353,6 +442,71 @@
             font-size: 1.2em;
         }
 
+        /* Product Recommendations */
+        .product-recommendations {
+            margin: 30px 0;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 16px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.1);
+            transition: all 0.3s;
+            border: 1px solid #ffe8d0;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25);
+        }
+
+        .product-image {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 15px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #fff9f0 0%, #fffbf5 100%);
+            padding: 10px;
+        }
+
+        .product-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+
+        .product-type {
+            color: #888;
+            font-size: 0.85em;
+            margin-bottom: 8px;
+        }
+
+        .product-benefit {
+            background: linear-gradient(135deg, #d4af37 0%, #ff6b9d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ffe8d0, transparent);
+            margin: 30px 0;
+        }
+
         .btn-group {
             display: flex;
             gap: 10px;
@@ -369,8 +523,8 @@
         }
 
         .spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #ec407a;
+            border: 4px solid #f0f0f0;
+            border-top: 4px solid #667eea;
             border-radius: 50%;
             width: 50px;
             height: 50px;
@@ -403,21 +557,24 @@
         }
 
         .back-btn {
-            background: #9e9e9e;
+            background: linear-gradient(135deg, #b0b3c5 0%, #9a9db0 100%);
             margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(176, 179, 197, 0.3);
         }
 
         .back-btn:hover {
-            background: #757575;
+            background: linear-gradient(135deg, #9a9db0 0%, #85889b 100%);
+            box-shadow: 0 8px 25px rgba(176, 179, 197, 0.4);
         }
 
         .ai-status {
-            background: #fff3e0;
+            background: linear-gradient(135deg, #fff8e1 0%, #fffbf0 100%);
             padding: 15px;
-            border-radius: 8px;
+            border-radius: 12px;
             margin: 20px 0;
-            border-left: 4px solid #ff9800;
+            border-left: 4px solid #ffa726;
             font-size: 0.9em;
+            box-shadow: 0 4px 15px rgba(255, 167, 38, 0.1);
         }
 
         .image-preview {
@@ -440,20 +597,23 @@
 
         .hero-section h2 {
             font-size: 2.2em;
-            color: #ec407a;
+            background: linear-gradient(135deg, #d4af37 0%, #f4c430 50%, #ff6b9d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 15px;
             font-weight: bold;
         }
 
         .hero-section .tagline {
             font-size: 1.2em;
-            color: #666;
+            color: #555;
             margin-bottom: 20px;
             line-height: 1.6;
         }
 
         .hero-section .highlight {
-            background: linear-gradient(135deg, #ec407a 0%, #ab47bc 100%);
+            background: linear-gradient(135deg, #d4af37 0%, #ff6b9d 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -468,27 +628,34 @@
         }
 
         .stat-card {
-            background: linear-gradient(135deg, #fce4ec 0%, #f3e5f5 100%);
-            padding: 20px;
-            border-radius: 12px;
+            background: linear-gradient(135deg, #ffffff 0%, #fff9f5 100%);
+            padding: 25px;
+            border-radius: 16px;
             text-align: center;
-            transition: transform 0.3s;
+            transition: all 0.4s;
+            border: 1px solid #ffe8d0;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.1);
         }
 
         .stat-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.25);
         }
 
         .stat-card .number {
-            font-size: 2.5em;
+            font-size: 2.8em;
             font-weight: bold;
-            color: #ec407a;
-            margin-bottom: 5px;
+            background: linear-gradient(135deg, #d4af37 0%, #f4c430 50%, #ff6b9d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
         }
 
         .stat-card .label {
             color: #666;
-            font-size: 0.9em;
+            font-size: 0.95em;
+            font-weight: 500;
         }
 
         .benefits-section {
@@ -499,15 +666,18 @@
             display: flex;
             align-items: start;
             margin: 20px 0;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            transition: all 0.3s;
+            padding: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #fff9f5 100%);
+            border-radius: 16px;
+            transition: all 0.4s;
+            border: 1px solid #ffe8d0;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.08);
         }
 
         .benefit-item:hover {
-            background: linear-gradient(135deg, #fce4ec 0%, #f3e5f5 100%);
+            background: linear-gradient(135deg, #fff9f0 0%, #fffbf5 100%);
             transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
         }
 
         .benefit-icon {
@@ -518,14 +688,17 @@
         }
 
         .benefit-content h4 {
-            color: #ec407a;
+            background: linear-gradient(135deg, #d4af37 0%, #ff6b9d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 5px;
             font-size: 1.1em;
         }
 
         .benefit-content p {
             color: #666;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .testimonial-section {
@@ -533,43 +706,77 @@
         }
 
         .testimonial {
-            background: linear-gradient(135deg, #e3f2fd 0%, #e1f5fe 100%);
+            background: linear-gradient(135deg, #fff0f5 0%, #ffe8f0 100%);
             padding: 20px;
-            border-radius: 12px;
+            border-radius: 16px;
             margin: 15px 0;
-            border-left: 4px solid #2196f3;
+            border-left: 4px solid #ff6b9d;
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.1);
+            transition: all 0.3s;
+        }
+
+        .testimonial:hover {
+            transform: translateX(8px);
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.2);
         }
 
         .testimonial-text {
             font-style: italic;
             color: #555;
             margin-bottom: 10px;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         .testimonial-author {
-            color: #2196f3;
+            background: linear-gradient(135deg, #d4af37 0%, #ff6b9d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             font-weight: bold;
         }
 
         .cta-box {
-            background: linear-gradient(135deg, #ec407a 0%, #ab47bc 100%);
+            background: linear-gradient(135deg, #d4af37 0%, #f4c430 50%, #ff6b9d 100%);
             color: white;
-            padding: 30px;
-            border-radius: 15px;
+            padding: 35px;
+            border-radius: 20px;
             text-align: center;
             margin: 30px 0;
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .cta-box h3 {
             font-size: 1.8em;
             margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .cta-box p {
             opacity: 0.95;
             margin-bottom: 20px;
             font-size: 1.1em;
+            position: relative;
+            z-index: 1;
         }
 
         .pulse-animation {
@@ -604,6 +811,10 @@
 
             #videoElement, #capturedImage, #uploadedImage {
                 max-width: 100%;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -643,7 +854,7 @@
                 </div>
 
                 <div class="benefits-section">
-                    <h3 style="text-align: center; color: #ec407a; margin-bottom: 25px; font-size: 1.5em;">
+                    <h3 style="text-align: center; background: linear-gradient(135deg, #d4af37 0%, #f4c430 50%, #ff6b9d 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 25px; font-size: 1.5em;">
                         🎁 Apa yang Kamu Dapatkan?
                     </h3>
                     
@@ -697,7 +908,7 @@
                 </div>
 
                 <div class="testimonial-section">
-                    <h3 style="text-align: center; color: #ec407a; margin-bottom: 20px; font-size: 1.5em;">
+                    <h3 style="text-align: center; background: linear-gradient(135deg, #d4af37 0%, #f4c430 50%, #ff6b9d 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px; font-size: 1.5em;">
                         💬 Kata Mereka yang Sudah Mencoba
                     </h3>
                     
@@ -729,7 +940,7 @@
                 <div class="cta-box pulse-animation">
                     <h3>🚀 Siap Mencoba?</h3>
                     <p>Mulai perjalanan kecantikanmu sekarang! Cukup klik tombol di bawah ini.</p>
-                    <button class="btn" onclick="showPage('loginPage')" style="background: white; color: #ec407a; font-size: 1.2em; padding: 15px 40px;">
+                    <button class="btn" onclick="showPage('loginPage')" style="background: white; color: #d4af37; font-size: 1.2em; padding: 15px 40px; box-shadow: 0 8px 30px rgba(255,255,255,0.4); position: relative; z-index: 1; font-weight: 700;">
                         ✨ Mulai Analisis Gratis Sekarang!
                     </button>
                 </div>
@@ -857,6 +1068,12 @@
 
                 <h3 style="margin: 30px 0 20px 0;">📊 Hasil Analisis Wajah</h3>
                 <div class="result-grid" id="resultGrid"></div>
+
+                <div class="section-divider"></div>
+
+                <div class="product-recommendations" id="productRecommendations"></div>
+
+                <div class="section-divider"></div>
 
                 <div class="recommendations" id="recommendations"></div>
 
@@ -1112,6 +1329,29 @@
                 </div>
             `;
 
+            // Get product recommendations
+            const products = getProductRecommendations(result);
+            const productSection = document.getElementById('productRecommendations');
+            
+            if (products.length > 0) {
+                let productHTML = '<h3 style="background: linear-gradient(135deg, #d4af37 0%, #ff6b9d 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px; text-align: center;">🛍️ Rekomendasi Produk untuk Kulitmu</h3>';
+                productHTML += '<div class="product-grid">';
+                
+                products.forEach(product => {
+                    productHTML += `
+                        <div class="product-card">
+                            <img src="${product.image}" alt="${product.name}" class="product-image">
+                            <div class="product-name">${product.name}</div>
+                            <div class="product-type">${product.type}</div>
+                            <div class="product-benefit">${product.benefit}</div>
+                        </div>
+                    `;
+                });
+                
+                productHTML += '</div>';
+                productSection.innerHTML = productHTML;
+            }
+
             const recommendations = getRecommendations(result);
             const recDiv = document.getElementById('recommendations');
             recDiv.innerHTML = `
@@ -1121,6 +1361,151 @@
 
             document.getElementById('processingSection').style.display = 'none';
             showPage('resultPage');
+        }
+
+        function getProductRecommendations(result) {
+            const products = [];
+            
+            // Rekomendasi berdasarkan jenis kulit
+            if (result.skinType === 'Berminyak') {
+                products.push({
+                    name: 'Oil Control Cleanser',
+                    type: 'Facial Wash',
+                    benefit: 'Mengontrol minyak berlebih',
+                    image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=300&h=300&fit=crop'
+                });
+                products.push({
+                    name: 'Mattifying Toner',
+                    type: 'Toner',
+                    benefit: 'Menyeimbangkan pH kulit',
+                    image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=300&h=300&fit=crop'
+                });
+                products.push({
+                    name: 'Oil-Free Moisturizer',
+                    type: 'Moisturizer',
+                    benefit: 'Melembabkan tanpa minyak',
+                    image: 'https://images.unsplash.com/photo-1570554886111-e80fcca6a029?w=300&h=300&fit=crop'
+                });
+            } else if (result.skinType === 'Kering') {
+                products.push({
+                    name: 'Hydrating Cleanser',
+                    type: 'Facial Wash',
+                    benefit: 'Membersihkan tanpa mengeringkan',
+                    image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=300&h=300&fit=crop'
+                });
+                products.push({
+                    name: 'Hyaluronic Acid Serum',
+                    type: 'Serum',
+                    benefit: 'Hidrasi intensif',
+                    image: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=300&h=300&fit=crop'
+                });
+                products.push({
+                    name: 'Rich Moisturizer',
+                    type: 'Moisturizer',
+                    benefit: 'Melembabkan maksimal',
+                    image: 'https://images.unsplash.com/photo-1570554886111-e80fcca6a029?w=300&h=300&fit=crop'
+                });
+                products.push({
+                    name: 'Nourishing Night Cream',
+                    type: 'Night Cream',
+                    benefit: 'Repair kulit di malam hari',
+                    image: 'https://images.unsplash.com/photo-1571875257727-256c39da42af?w=300&h=300&fit=crop'
+                });
+            } else if (result.skinType === 'Normal') {
+                products.push({
+                    name: 'Gentle Cleanser',
+                    type: 'Facial Wash',
+                    benefit: 'Pembersihan lembut',
+                    image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=300&h=300&fit=crop'
+                });
+                products.push({
+                    name: 'Balancing Toner',
+                    type: 'Toner',
+                    benefit: 'Menjaga keseimbangan kulit',
+                    image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=300&h=300&fit=crop'
+                });
+                products.push({
+                    name: 'Daily Moisturizer',
+                    type: 'Moisturizer',
+                    benefit: 'Melembabkan sehari-hari',
+                    image: 'https://images.unsplash.com/photo-1570554886111-e80fcca6a029?w=300&h=300&fit=crop'
+                });
+            } else if (result.skinType === 'Kombinasi') {
+                products.push({
+                    name: 'Balancing Cleanser',
+                    type: 'Facial Wash',
+                    benefit: 'Seimbangkan area berbeda',
+                    image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=300&h=300&fit=crop'
+                });
+                products.push({
+                    name: 'Multi-Action Serum',
+                    type: 'Serum',
+                    benefit: 'Perawatan menyeluruh',
+                    image: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=300&h=300&fit=crop'
+                });
+                products.push({
+                    name: 'Lightweight Moisturizer',
+                    type: 'Moisturizer',
+                    benefit: 'Tekstur ringan',
+                    image: 'https://images.unsplash.com/photo-1570554886111-e80fcca6a029?w=300&h=300&fit=crop'
+                });
+            }
+            
+            // Tambahan untuk kondisi khusus
+            if (result.acne !== 'Tidak Ada') {
+                products.push({
+                    name: 'Acne Treatment Serum',
+                    type: 'Treatment',
+                    benefit: 'Mengatasi jerawat',
+                    image: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=300&h=300&fit=crop'
+                });
+                products.push({
+                    name: 'Spot Treatment',
+                    type: 'Treatment',
+                    benefit: 'Target jerawat aktif',
+                    image: 'https://images.unsplash.com/photo-1612817288484-6f916006741a?w=300&h=300&fit=crop'
+                });
+            }
+            
+            if (result.poreSize === 'Besar') {
+                products.push({
+                    name: 'Pore Minimizer Serum',
+                    type: 'Serum',
+                    benefit: 'Mengecilkan pori-pori',
+                    image: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=300&h=300&fit=crop'
+                });
+                products.push({
+                    name: 'Clay Mask',
+                    type: 'Mask',
+                    benefit: 'Membersihkan pori dalam',
+                    image: 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=300&h=300&fit=crop'
+                });
+            }
+            
+            if (result.wrinkles === 'Terdeteksi') {
+                products.push({
+                    name: 'Anti-Aging Retinol Serum',
+                    type: 'Serum',
+                    benefit: 'Mengurangi kerutan',
+                    image: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=300&h=300&fit=crop'
+                });
+                products.push({
+                    name: 'Firming Eye Cream',
+                    type: 'Eye Cream',
+                    benefit: 'Kencangkan area mata',
+                    image: 'https://images.unsplash.com/photo-1571875257727-256c39da42af?w=300&h=300&fit=crop'
+                });
+            }
+            
+            // Selalu tambahkan sunscreen
+            products.push({
+                name: 'Broad Spectrum Sunscreen SPF 50',
+                type: 'Sun Protection',
+                benefit: 'Lindungi dari UV',
+                image: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=300&fit=crop'
+            });
+            
+            return products;
         }
 
         function getRecommendations(result) {
