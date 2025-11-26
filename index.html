@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beauty Diagnosis AI</title>
+    <title>BEAUTY DIAGNOSIS - AI Skincare Analysis</title>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/blazeface"></script>
     <style>
@@ -15,7 +15,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 50%, #ff9a9e 100%);
+            background: linear-gradient(135deg, #fef9f3 0%, #fde8e9 50%, #fef0f5 100%);
             min-height: 100vh;
             padding: 10px;
         }
@@ -23,17 +23,17 @@
         .container {
             max-width: 900px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border-radius: 24px;
-            box-shadow: 0 25px 80px rgba(255, 154, 158, 0.3);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
             overflow: hidden;
-            border: 1px solid rgba(255, 215, 0, 0.2);
+            border: 1px solid rgba(255, 240, 230, 0.5);
         }
 
         .header {
-            background: linear-gradient(135deg, #d4af37 0%, #f4c430 50%, #ff6b9d 100%);
-            color: white;
+            background: linear-gradient(135deg, #f8d7b4 0%, #f5c7d4 50%, #f3c5da 100%);
+            color: #5a4a42;
             padding: 25px 20px;
             text-align: center;
             position: relative;
@@ -47,8 +47,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.2)"/></pattern></defs><rect fill="url(%23dots)" width="100" height="100"/></svg>');
-            opacity: 0.3;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.3)"/></pattern></defs><rect fill="url(%23dots)" width="100" height="100"/></svg>');
+            opacity: 0.4;
         }
 
         .header h1 {
@@ -161,7 +161,7 @@
         }
 
         .btn {
-            background: linear-gradient(135deg, #d4af37 0%, #f4c430 50%, #ff6b9d 100%);
+            background: linear-gradient(135deg, #e8c5a8 0%, #f0cfc8 50%, #efc5d5 100%);
             color: white;
             border: none;
             padding: 15px 30px;
@@ -172,7 +172,7 @@
             width: 100%;
             margin: 10px 0;
             font-weight: 600;
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 6px 20px rgba(232, 197, 168, 0.25);
             position: relative;
             overflow: hidden;
         }
@@ -184,7 +184,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
             transition: left 0.5s;
         }
 
@@ -193,8 +193,8 @@
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(232, 197, 168, 0.35);
         }
 
         .btn:active {
@@ -207,33 +207,33 @@
         }
 
         .btn-secondary {
-            background: linear-gradient(135deg, #ffd1dc 0%, #ffc3d5 50%, #ffb6c1 100%);
-            color: #d4af37;
-            box-shadow: 0 4px 15px rgba(255, 209, 220, 0.4);
+            background: linear-gradient(135deg, #f5e6e8 0%, #f8e8eb 50%, #fbe8ed 100%);
+            color: #8b7070;
+            box-shadow: 0 6px 20px rgba(245, 230, 232, 0.3);
         }
 
         .btn-secondary:hover {
-            box-shadow: 0 8px 25px rgba(255, 209, 220, 0.6);
+            box-shadow: 0 10px 30px rgba(245, 230, 232, 0.4);
         }
 
         .btn-success {
-            background: linear-gradient(135deg, #ffd700 0%, #ffa500 50%, #ff6b9d 100%);
+            background: linear-gradient(135deg, #e8dcc4 0%, #f0d9ca 50%, #efd4d4 100%);
             color: white;
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+            box-shadow: 0 6px 20px rgba(232, 220, 196, 0.3);
         }
 
         .btn-success:hover {
-            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+            box-shadow: 0 10px 30px rgba(232, 220, 196, 0.4);
         }
 
         .btn-danger {
-            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 50%, #c71585 100%);
+            background: linear-gradient(135deg, #f0c8c8 0%, #ecc5cc 50%, #e8c2d0 100%);
             color: white;
-            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+            box-shadow: 0 6px 20px rgba(240, 200, 200, 0.3);
         }
 
         .btn-danger:hover {
-            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.6);
+            box-shadow: 0 10px 30px rgba(240, 200, 200, 0.4);
         }
 
         .input-group {
@@ -250,18 +250,18 @@
         .input-group input {
             width: 100%;
             padding: 14px 18px;
-            border: 2px solid #e8e8e8;
+            border: 2px solid #f5e8e4;
             border-radius: 12px;
             font-size: 1em;
             transition: all 0.3s;
-            background: #fafafa;
+            background: #fdfbf9;
         }
 
         .input-group input:focus {
             outline: none;
-            border-color: #d4af37;
+            border-color: #e8c5a8;
             background: white;
-            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+            box-shadow: 0 0 0 4px rgba(232, 197, 168, 0.1);
         }
 
         .alert {
@@ -271,34 +271,34 @@
         }
 
         .alert-error {
-            background: linear-gradient(135deg, #ffe5ec 0%, #fff0f3 100%);
-            color: #d32f2f;
-            border: 1px solid #ffcdd2;
+            background: linear-gradient(135deg, #fef5f5 0%, #fff8f8 100%);
+            color: #c08080;
+            border: 1px solid #f5d5d5;
         }
 
         .alert-success {
-            background: linear-gradient(135deg, #fff8e1 0%, #fffbf0 100%);
-            color: #f57c00;
-            border: 1px solid #ffd54f;
+            background: linear-gradient(135deg, #fef9f3 0%, #fffcf7 100%);
+            color: #a68860;
+            border: 1px solid #f5e8d0;
         }
 
         .alert-info {
-            background: linear-gradient(135deg, #fff0f5 0%, #ffe8f0 100%);
-            color: #c2185b;
-            border: 1px solid #f8bbd0;
+            background: linear-gradient(135deg, #fef7f9 0%, #fff9fb 100%);
+            color: #b88898;
+            border: 1px solid #f5dce5;
         }
 
         .feature-box {
-            background: linear-gradient(135deg, #fff9f0 0%, #fffbf5 100%);
+            background: linear-gradient(135deg, #fefbf8 0%, #fffcfa 100%);
             padding: 20px;
             border-radius: 16px;
             margin: 20px 0;
-            border: 1px solid #ffe8d0;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.08);
+            border: 1px solid #f5ebe5;
+            box-shadow: 0 4px 15px rgba(232, 197, 168, 0.06);
         }
 
         .feature-box h3 {
-            background: linear-gradient(135deg, #d4af37 0%, #ff6b9d 100%);
+            background: linear-gradient(135deg, #c9a88a 0%, #d5a8b4 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -323,26 +323,26 @@
         }
 
         .upload-area {
-            border: 3px dashed #f4c430;
+            border: 3px dashed #e8cfbc;
             border-radius: 16px;
             padding: 40px;
             text-align: center;
             cursor: pointer;
             transition: all 0.4s;
             margin: 20px 0;
-            background: linear-gradient(135deg, #fffef9 0%, #fffdf5 100%);
+            background: linear-gradient(135deg, #fefcfa 0%, #fffdfb 100%);
         }
 
         .upload-area:hover {
-            background: linear-gradient(135deg, #fff9e6 0%, #fff5dc 100%);
-            border-color: #d4af37;
+            background: linear-gradient(135deg, #fef9f5 0%, #fffbf7 100%);
+            border-color: #d9b89f;
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 8px 20px rgba(232, 197, 168, 0.15);
         }
 
         .upload-area i {
             font-size: 3em;
-            color: #d4af37;
+            color: #c9a88a;
             margin-bottom: 15px;
         }
 
@@ -373,22 +373,22 @@
         }
 
         .result-card {
-            background: linear-gradient(135deg, #ffffff 0%, #fff9f5 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #fefbf8 100%);
             padding: 20px;
             border-radius: 16px;
             text-align: center;
-            border: 1px solid #ffe8d0;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.1);
+            border: 1px solid #f5ebe5;
+            box-shadow: 0 4px 15px rgba(232, 197, 168, 0.08);
             transition: all 0.3s;
         }
 
         .result-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 8px 25px rgba(232, 197, 168, 0.15);
         }
 
         .result-card h4 {
-            color: #888;
+            color: #999;
             font-size: 0.9em;
             margin-bottom: 10px;
             text-transform: uppercase;
@@ -396,7 +396,7 @@
         }
 
         .result-card .value {
-            background: linear-gradient(135deg, #d4af37 0%, #f4c430 50%, #ff6b9d 100%);
+            background: linear-gradient(135deg, #c9a88a 0%, #d5a8b4 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -405,16 +405,16 @@
         }
 
         .recommendations {
-            background: linear-gradient(135deg, #fff9f0 0%, #fffbf5 100%);
+            background: linear-gradient(135deg, #fefbf8 0%, #fffcfa 100%);
             padding: 25px;
             border-radius: 16px;
             margin: 30px 0;
-            border: 1px solid #ffe8d0;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.1);
+            border: 1px solid #f5ebe5;
+            box-shadow: 0 4px 15px rgba(232, 197, 168, 0.08);
         }
 
         .recommendations h3 {
-            background: linear-gradient(135deg, #d4af37 0%, #ff6b9d 100%);
+            background: linear-gradient(135deg, #c9a88a 0%, #d5a8b4 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -459,14 +459,14 @@
             border-radius: 16px;
             padding: 15px;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.1);
+            box-shadow: 0 4px 15px rgba(232, 197, 168, 0.08);
             transition: all 0.3s;
-            border: 1px solid #ffe8d0;
+            border: 1px solid #f5ebe5;
         }
 
         .product-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25);
+            box-shadow: 0 8px 25px rgba(232, 197, 168, 0.15);
         }
 
         .product-image {
@@ -475,25 +475,25 @@
             margin: 0 auto 15px;
             border-radius: 12px;
             object-fit: cover;
-            background: linear-gradient(135deg, #fff9f0 0%, #fffbf5 100%);
+            background: linear-gradient(135deg, #fefbf8 0%, #fffcfa 100%);
             padding: 10px;
         }
 
         .product-name {
             font-weight: bold;
-            color: #333;
+            color: #5a4a42;
             margin-bottom: 8px;
             font-size: 1em;
         }
 
         .product-type {
-            color: #888;
+            color: #999;
             font-size: 0.85em;
             margin-bottom: 8px;
         }
 
         .product-benefit {
-            background: linear-gradient(135deg, #d4af37 0%, #ff6b9d 100%);
+            background: linear-gradient(135deg, #c9a88a 0%, #d5a8b4 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -503,7 +503,7 @@
 
         .section-divider {
             height: 2px;
-            background: linear-gradient(90deg, transparent, #ffe8d0, transparent);
+            background: linear-gradient(90deg, transparent, #f5ebe5, transparent);
             margin: 30px 0;
         }
 
@@ -597,7 +597,7 @@
 
         .hero-section h2 {
             font-size: 2.2em;
-            background: linear-gradient(135deg, #d4af37 0%, #f4c430 50%, #ff6b9d 100%);
+            background: linear-gradient(135deg, #c9a88a 0%, #d5a8b4 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -607,13 +607,13 @@
 
         .hero-section .tagline {
             font-size: 1.2em;
-            color: #555;
+            color: #7a6a5e;
             margin-bottom: 20px;
             line-height: 1.6;
         }
 
         .hero-section .highlight {
-            background: linear-gradient(135deg, #d4af37 0%, #ff6b9d 100%);
+            background: linear-gradient(135deg, #c9a88a 0%, #d5a8b4 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -628,24 +628,24 @@
         }
 
         .stat-card {
-            background: linear-gradient(135deg, #ffffff 0%, #fff9f5 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #fefbf8 100%);
             padding: 25px;
             border-radius: 16px;
             text-align: center;
             transition: all 0.4s;
-            border: 1px solid #ffe8d0;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.1);
+            border: 1px solid #f5ebe5;
+            box-shadow: 0 4px 15px rgba(232, 197, 168, 0.08);
         }
 
         .stat-card:hover {
             transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.25);
+            box-shadow: 0 12px 30px rgba(232, 197, 168, 0.18);
         }
 
         .stat-card .number {
             font-size: 2.8em;
             font-weight: bold;
-            background: linear-gradient(135deg, #d4af37 0%, #f4c430 50%, #ff6b9d 100%);
+            background: linear-gradient(135deg, #c9a88a 0%, #d5a8b4 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -653,7 +653,7 @@
         }
 
         .stat-card .label {
-            color: #666;
+            color: #888;
             font-size: 0.95em;
             font-weight: 500;
         }
@@ -667,17 +667,17 @@
             align-items: start;
             margin: 20px 0;
             padding: 20px;
-            background: linear-gradient(135deg, #ffffff 0%, #fff9f5 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #fefbf8 100%);
             border-radius: 16px;
             transition: all 0.4s;
-            border: 1px solid #ffe8d0;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.08);
+            border: 1px solid #f5ebe5;
+            box-shadow: 0 4px 15px rgba(232, 197, 168, 0.06);
         }
 
         .benefit-item:hover {
-            background: linear-gradient(135deg, #fff9f0 0%, #fffbf5 100%);
+            background: linear-gradient(135deg, #fefbf8 0%, #fffcfa 100%);
             transform: translateX(10px);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 8px 25px rgba(232, 197, 168, 0.12);
         }
 
         .benefit-icon {
@@ -688,7 +688,7 @@
         }
 
         .benefit-content h4 {
-            background: linear-gradient(135deg, #d4af37 0%, #ff6b9d 100%);
+            background: linear-gradient(135deg, #c9a88a 0%, #d5a8b4 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -697,7 +697,7 @@
         }
 
         .benefit-content p {
-            color: #666;
+            color: #7a6a5e;
             line-height: 1.6;
         }
 
@@ -706,29 +706,29 @@
         }
 
         .testimonial {
-            background: linear-gradient(135deg, #fff0f5 0%, #ffe8f0 100%);
+            background: linear-gradient(135deg, #fef9f7 0%, #fffbf9 100%);
             padding: 20px;
             border-radius: 16px;
             margin: 15px 0;
-            border-left: 4px solid #ff6b9d;
-            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.1);
+            border-left: 4px solid #d5a8b4;
+            box-shadow: 0 4px 15px rgba(213, 168, 180, 0.08);
             transition: all 0.3s;
         }
 
         .testimonial:hover {
             transform: translateX(8px);
-            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.2);
+            box-shadow: 0 8px 25px rgba(213, 168, 180, 0.12);
         }
 
         .testimonial-text {
             font-style: italic;
-            color: #555;
+            color: #7a6a5e;
             margin-bottom: 10px;
             line-height: 1.7;
         }
 
         .testimonial-author {
-            background: linear-gradient(135deg, #d4af37 0%, #ff6b9d 100%);
+            background: linear-gradient(135deg, #c9a88a 0%, #d5a8b4 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -736,13 +736,13 @@
         }
 
         .cta-box {
-            background: linear-gradient(135deg, #d4af37 0%, #f4c430 50%, #ff6b9d 100%);
+            background: linear-gradient(135deg, #e8c5a8 0%, #f0cfc8 50%, #efc5d5 100%);
             color: white;
             padding: 35px;
             border-radius: 20px;
             text-align: center;
             margin: 30px 0;
-            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 40px rgba(232, 197, 168, 0.25);
             position: relative;
             overflow: hidden;
         }
@@ -768,7 +768,7 @@
             margin-bottom: 10px;
             position: relative;
             z-index: 1;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .cta-box p {
@@ -822,7 +822,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>💄 Beauty Diagnosis AI</h1>
+            <h1>💄 BEAUTY DIAGNOSIS</h1>
             <p>Analisis Kecantikan Wajah dengan Kecerdasan Buatan</p>
         </div>
 
@@ -854,7 +854,7 @@
                 </div>
 
                 <div class="benefits-section">
-                    <h3 style="text-align: center; background: linear-gradient(135deg, #d4af37 0%, #f4c430 50%, #ff6b9d 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 25px; font-size: 1.5em;">
+                    <h3 style="text-align: center; background: linear-gradient(135deg, #c9a88a 0%, #d5a8b4 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 25px; font-size: 1.5em;">
                         🎁 Apa yang Kamu Dapatkan?
                     </h3>
                     
@@ -908,7 +908,7 @@
                 </div>
 
                 <div class="testimonial-section">
-                    <h3 style="text-align: center; background: linear-gradient(135deg, #d4af37 0%, #f4c430 50%, #ff6b9d 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px; font-size: 1.5em;">
+                    <h3 style="text-align: center; background: linear-gradient(135deg, #c9a88a 0%, #d5a8b4 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px; font-size: 1.5em;">
                         💬 Kata Mereka yang Sudah Mencoba
                     </h3>
                     
@@ -940,7 +940,7 @@
                 <div class="cta-box pulse-animation">
                     <h3>🚀 Siap Mencoba?</h3>
                     <p>Mulai perjalanan kecantikanmu sekarang! Cukup klik tombol di bawah ini.</p>
-                    <button class="btn" onclick="showPage('loginPage')" style="background: white; color: #d4af37; font-size: 1.2em; padding: 15px 40px; box-shadow: 0 8px 30px rgba(255,255,255,0.4); position: relative; z-index: 1; font-weight: 700;">
+                    <button class="btn" onclick="showPage('loginPage')" style="background: white; color: #8b7070; font-size: 1.2em; padding: 15px 40px; box-shadow: 0 8px 30px rgba(255,255,255,0.5); position: relative; z-index: 1; font-weight: 700;">
                         ✨ Mulai Analisis Gratis Sekarang!
                     </button>
                 </div>
@@ -1072,10 +1072,6 @@
                 <div class="section-divider"></div>
 
                 <div class="product-recommendations" id="productRecommendations"></div>
-
-                <div class="section-divider"></div>
-
-                <div class="recommendations" id="recommendations"></div>
 
                 <div class="btn-group">
                     <button class="btn" onclick="showPage('uploadPage'); resetUpload();">
@@ -1329,240 +1325,179 @@
                 </div>
             `;
 
-            // Get product recommendations
-            const products = getProductRecommendations(result);
-            const productSection = document.getElementById('productRecommendations');
-            
-            if (products.length > 0) {
-                let productHTML = '<h3 style="background: linear-gradient(135deg, #d4af37 0%, #ff6b9d 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px; text-align: center;">🛍️ Rekomendasi Produk untuk Kulitmu</h3>';
-                productHTML += '<div class="product-grid">';
-                
-                products.forEach(product => {
-                    productHTML += `
-                        <div class="product-card">
-                            <img src="${product.image}" alt="${product.name}" class="product-image">
-                            <div class="product-name">${product.name}</div>
-                            <div class="product-type">${product.type}</div>
-                            <div class="product-benefit">${product.benefit}</div>
-                        </div>
-                    `;
-                });
-                
-                productHTML += '</div>';
-                productSection.innerHTML = productHTML;
-            }
-
-            const recommendations = getRecommendations(result);
-            const recDiv = document.getElementById('recommendations');
-            recDiv.innerHTML = `
-                <h3>💡 Rekomendasi Perawatan dari AI</h3>
-                <ul>${recommendations.map(rec => `<li>${rec}</li>`).join('')}</ul>
-            `;
+            // Get treatment procedures
+            const procedures = getTreatmentProcedures(result);
+            const procedureSection = document.getElementById('productRecommendations');
+            procedureSection.innerHTML = procedures;
 
             document.getElementById('processingSection').style.display = 'none';
             showPage('resultPage');
         }
 
-        function getProductRecommendations(result) {
-            const products = [];
+        function getTreatmentProcedures(result) {
+            let procedureHTML = '<h3 style="background: linear-gradient(135deg, #c9a88a 0%, #d5a8b4 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px; text-align: center;">✨ Prosedur Perawatan Wajah untuk Kulitmu</h3>';
             
-            // Rekomendasi berdasarkan jenis kulit
-            if (result.skinType === 'Berminyak') {
-                products.push({
-                    name: 'Oil Control Cleanser',
-                    type: 'Facial Wash',
-                    benefit: 'Mengontrol minyak berlebih',
-                    image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=300&h=300&fit=crop'
-                });
-                products.push({
-                    name: 'Mattifying Toner',
-                    type: 'Toner',
-                    benefit: 'Menyeimbangkan pH kulit',
-                    image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=300&h=300&fit=crop'
-                });
-                products.push({
-                    name: 'Oil-Free Moisturizer',
-                    type: 'Moisturizer',
-                    benefit: 'Melembabkan tanpa minyak',
-                    image: 'https://images.unsplash.com/photo-1570554886111-e80fcca6a029?w=300&h=300&fit=crop'
-                });
-            } else if (result.skinType === 'Kering') {
-                products.push({
-                    name: 'Hydrating Cleanser',
-                    type: 'Facial Wash',
-                    benefit: 'Membersihkan tanpa mengeringkan',
-                    image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=300&h=300&fit=crop'
-                });
-                products.push({
-                    name: 'Hyaluronic Acid Serum',
-                    type: 'Serum',
-                    benefit: 'Hidrasi intensif',
-                    image: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=300&h=300&fit=crop'
-                });
-                products.push({
-                    name: 'Rich Moisturizer',
-                    type: 'Moisturizer',
-                    benefit: 'Melembabkan maksimal',
-                    image: 'https://images.unsplash.com/photo-1570554886111-e80fcca6a029?w=300&h=300&fit=crop'
-                });
-                products.push({
-                    name: 'Nourishing Night Cream',
-                    type: 'Night Cream',
-                    benefit: 'Repair kulit di malam hari',
-                    image: 'https://images.unsplash.com/photo-1571875257727-256c39da42af?w=300&h=300&fit=crop'
-                });
+            procedureHTML += '<div style="background: linear-gradient(135deg, #fefbf8 0%, #fffcfa 100%); padding: 25px; border-radius: 16px; border: 1px solid #f5ebe5;">';
+            
+            if (result.skinType === 'Kering') {
+                procedureHTML += `
+                    <h4 style="color: #5a4a42; margin-bottom: 15px; font-size: 1.2em;">🌸 Perawatan Wajah Kering</h4>
+                    <ol style="line-height: 2; color: #7a6a5e; padding-left: 20px;">
+                        <li><strong>Pembersihan Ganda (Double Cleansing)</strong><br>
+                        Gunakan milk cleanser atau makeup remover berbahan dasar minyak, lanjutkan dengan facial wash berbahan dasar air.</li>
+                        
+                        <li><strong>Eksfoliasi (Exfoliation)</strong><br>
+                        Oleskan face scrub atau produk eksfoliator dengan gerakan melingkar untuk mengangkat sel kulit mati.</li>
+                        
+                        <li><strong>Penguapan (Steaming)</strong><br>
+                        Gunakan facial steamer atau air hangat untuk membuka pori-pori wajah.</li>
+                        
+                        <li><strong>Ekstraksi Komedo</strong><br>
+                        Keluarkan komedo menggunakan alat ekstraksi atau manual dengan hati-hati.</li>
+                        
+                        <li><strong>Pijat Wajah (Facial Massage)</strong><br>
+                        Lakukan pijatan lembut untuk melancarkan sirkulasi darah dan relaksasi.</li>
+                        
+                        <li><strong>Masker Wajah</strong><br>
+                        Aplikasikan masker sesuai jenis kulit, biarkan 10-15 menit.</li>
+                        
+                        <li><strong>Toner</strong><br>
+                        Oleskan toner untuk mengembalikan keseimbangan pH kulit.</li>
+                        
+                        <li><strong>Serum</strong><br>
+                        Gunakan serum yang menargetkan masalah kulit spesifik.</li>
+                        
+                        <li><strong>Pelembap (Moisturizer)</strong><br>
+                        Oleskan krim pelembap ke seluruh wajah dan leher untuk menjaga hidrasi.</li>
+                    </ol>
+                `;
             } else if (result.skinType === 'Normal') {
-                products.push({
-                    name: 'Gentle Cleanser',
-                    type: 'Facial Wash',
-                    benefit: 'Pembersihan lembut',
-                    image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=300&h=300&fit=crop'
-                });
-                products.push({
-                    name: 'Balancing Toner',
-                    type: 'Toner',
-                    benefit: 'Menjaga keseimbangan kulit',
-                    image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=300&h=300&fit=crop'
-                });
-                products.push({
-                    name: 'Daily Moisturizer',
-                    type: 'Moisturizer',
-                    benefit: 'Melembabkan sehari-hari',
-                    image: 'https://images.unsplash.com/photo-1570554886111-e80fcca6a029?w=300&h=300&fit=crop'
-                });
+                procedureHTML += `
+                    <h4 style="color: #5a4a42; margin-bottom: 15px; font-size: 1.2em;">🌸 Perawatan Wajah Normal</h4>
+                    <ol style="line-height: 2; color: #7a6a5e; padding-left: 20px;">
+                        <li><strong>Pembersihan Ganda (Double Cleansing)</strong><br>
+                        Cleansing oil/micellar water, dilanjutkan dengan facial wash berbahan dasar air.<br>
+                        <em>Kosmetik: Cleansing oil, micellar water, milk cleanser</em></li>
+                        
+                        <li><strong>Eksfoliasi (Exfoliation)</strong><br>
+                        Mengangkat sel kulit mati dengan scrub atau produk peeling (AHA/BHA).<br>
+                        <em>Kosmetik: Face scrub atau gel/solution peeling</em></li>
+                        
+                        <li><strong>Penguapan (Steaming)</strong><br>
+                        Uap hangat untuk membuka pori-pori lebih lebar.<br>
+                        <em>Kosmetik: Air hangat + minyak esensial (opsional), facial steamer</em></li>
+                        
+                        <li><strong>Ekstraksi Komedo</strong><br>
+                        Mengangkat komedo hitam dan putih dengan alat ekstraktor.<br>
+                        <em>Kosmetik: Alat ekstraktor komedo atau tisu steril</em></li>
+                        
+                        <li><strong>Masker Wajah</strong><br>
+                        Aplikasikan masker sesuai kebutuhan (clay, hidrasi, penenang), diamkan 15-20 menit.<br>
+                        <em>Kosmetik: Masker peel-off, sheet mask, clay mask, gel mask</em></li>
+                        
+                        <li><strong>Toner</strong><br>
+                        Mengembalikan keseimbangan pH dan menenangkan kulit.<br>
+                        <em>Kosmetik: Hydrating atau calming toner</em></li>
+                        
+                        <li><strong>Serum dan Pelembap</strong><br>
+                        Nutrisi mendalam dengan serum, lalu pelembap untuk mengunci kelembapan.<br>
+                        <em>Kosmetik: Serum vitamin C/hyaluronic acid, pelembap lotion/cream</em></li>
+                        
+                        <li><strong>Perlindungan Mata dan Bibir</strong><br>
+                        Aplikasikan krim mata dan lip balm.<br>
+                        <em>Kosmetik: Krim mata dan lip balm</em></li>
+                        
+                        <li><strong>Tabir Surya (Sunscreen)</strong><br>
+                        Perlindungan dari sinar UV, SPF minimal 30.<br>
+                        <em>Kosmetik: Sunscreen SPF 30+</em></li>
+                    </ol>
+                `;
+            } else if (result.skinType === 'Berminyak') {
+                procedureHTML += `
+                    <h4 style="color: #5a4a42; margin-bottom: 15px; font-size: 1.2em;">🌸 Perawatan Wajah Berminyak</h4>
+                    <ol style="line-height: 2; color: #7a6a5e; padding-left: 20px;">
+                        <li><strong>Pembersih Wajah (Facial Wash)</strong><br>
+                        Cuci wajah dengan air hangat dan pembersih lembut, keringkan dengan menepuk-nepuk.<br>
+                        <em>Kosmetik: Pembersih gel/busa dengan asam salisilat atau benzoil peroksida</em></li>
+                        
+                        <li><strong>Toner</strong><br>
+                        Aplikasikan toner ke seluruh wajah dengan kapas atau tangan.<br>
+                        <em>Kosmetik: Toner bebas alkohol dengan niasinamida untuk kontrol minyak</em></li>
+                        
+                        <li><strong>Serum (Opsional, Fokus Jerawat)</strong><br>
+                        Aplikasikan beberapa tetes serum dan tepuk-tepuk lembut.<br>
+                        <em>Kosmetik: Serum asam hialuronat untuk hidrasi atau vitamin C untuk mencerahkan</em></li>
+                        
+                        <li><strong>Masker Wajah</strong><br>
+                        Aplikasikan masker secara merata pada seluruh wajah.<br>
+                        <em>Kosmetik: Glamveda Rice & Ceramide And Glycolic & Salicylic Anti Acne Peel Off Face Mask</em></li>
+                        
+                        <li><strong>Pelembap (Moisturizer)</strong><br>
+                        Aplikasikan pelembap merata ke wajah dan leher.<br>
+                        <em>Kosmetik: Pelembap water-based, tekstur gel, non-komedogenik, oil-free</em></li>
+                        
+                        <li><strong>Tabir Surya (Sunscreen)</strong><br>
+                        Langkah penting terakhir sebelum beraktivitas.<br>
+                        <em>Kosmetik: Sunscreen gel/losion ringan, oil-free, SPF minimal 30 PA+</em></li>
+                    </ol>
+                `;
             } else if (result.skinType === 'Kombinasi') {
-                products.push({
-                    name: 'Balancing Cleanser',
-                    type: 'Facial Wash',
-                    benefit: 'Seimbangkan area berbeda',
-                    image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=300&h=300&fit=crop'
-                });
-                products.push({
-                    name: 'Multi-Action Serum',
-                    type: 'Serum',
-                    benefit: 'Perawatan menyeluruh',
-                    image: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=300&h=300&fit=crop'
-                });
-                products.push({
-                    name: 'Lightweight Moisturizer',
-                    type: 'Moisturizer',
-                    benefit: 'Tekstur ringan',
-                    image: 'https://images.unsplash.com/photo-1570554886111-e80fcca6a029?w=300&h=300&fit=crop'
-                });
+                procedureHTML += `
+                    <h4 style="color: #5a4a42; margin-bottom: 15px; font-size: 1.2em;">🌸 Perawatan Wajah Kombinasi</h4>
+                    <ol style="line-height: 2; color: #7a6a5e; padding-left: 20px;">
+                        <li><strong>Pembersihan Ganda</strong><br>
+                        Gunakan micellar water dilanjutkan dengan facial wash lembut.</li>
+                        
+                        <li><strong>Eksfoliasi</strong><br>
+                        Gunakan scrub lembut 2-3x seminggu untuk mengangkat sel kulit mati.</li>
+                        
+                        <li><strong>Toner</strong><br>
+                        Aplikasikan toner penyeimbang untuk area T-zone dan pipi.</li>
+                        
+                        <li><strong>Serum</strong><br>
+                        Gunakan serum yang sesuai untuk area berbeda (minyak kontrol untuk T-zone, hidrasi untuk pipi).</li>
+                        
+                        <li><strong>Masker Multi-Zone</strong><br>
+                        Pertimbangkan multi-masking: clay mask untuk T-zone, hydrating mask untuk area kering.</li>
+                        
+                        <li><strong>Pelembap</strong><br>
+                        Gunakan pelembap gel untuk seluruh wajah atau cream untuk area kering saja.</li>
+                        
+                        <li><strong>Sunscreen</strong><br>
+                        Aplikasikan sunscreen ringan SPF 30+ ke seluruh wajah.</li>
+                    </ol>
+                `;
             }
             
-            // Tambahan untuk kondisi khusus
-            if (result.acne !== 'Tidak Ada') {
-                products.push({
-                    name: 'Acne Treatment Serum',
-                    type: 'Treatment',
-                    benefit: 'Mengatasi jerawat',
-                    image: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=300&h=300&fit=crop'
-                });
-                products.push({
-                    name: 'Spot Treatment',
-                    type: 'Treatment',
-                    benefit: 'Target jerawat aktif',
-                    image: 'https://images.unsplash.com/photo-1612817288484-6f916006741a?w=300&h=300&fit=crop'
-                });
-            }
-            
-            if (result.poreSize === 'Besar') {
-                products.push({
-                    name: 'Pore Minimizer Serum',
-                    type: 'Serum',
-                    benefit: 'Mengecilkan pori-pori',
-                    image: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=300&h=300&fit=crop'
-                });
-                products.push({
-                    name: 'Clay Mask',
-                    type: 'Mask',
-                    benefit: 'Membersihkan pori dalam',
-                    image: 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=300&h=300&fit=crop'
-                });
-            }
-            
-            if (result.wrinkles === 'Terdeteksi') {
-                products.push({
-                    name: 'Anti-Aging Retinol Serum',
-                    type: 'Serum',
-                    benefit: 'Mengurangi kerutan',
-                    image: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=300&h=300&fit=crop'
-                });
-                products.push({
-                    name: 'Firming Eye Cream',
-                    type: 'Eye Cream',
-                    benefit: 'Kencangkan area mata',
-                    image: 'https://images.unsplash.com/photo-1571875257727-256c39da42af?w=300&h=300&fit=crop'
-                });
-            }
-            
-            // Selalu tambahkan sunscreen
-            products.push({
-                name: 'Broad Spectrum Sunscreen SPF 50',
-                type: 'Sun Protection',
-                benefit: 'Lindungi dari UV',
-                image: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=300&fit=crop'
-            });
-            
-            return products;
-        }
-
-        function getRecommendations(result) {
-            const recommendations = [];
-
-            // Skin type recommendations
-            if (result.skinType === 'Berminyak') {
-                recommendations.push('Gunakan pembersih wajah khusus kulit berminyak dengan salicylic acid');
-                recommendations.push('Aplikasikan toner oil-control untuk mengontrol produksi minyak');
-                recommendations.push('Hindari produk berbasis minyak, pilih yang water-based');
-                recommendations.push('Gunakan blotting paper saat kulit terlihat berminyak');
-            } else if (result.skinType === 'Kering') {
-                recommendations.push('Gunakan pelembab intensif dengan kandungan ceramide dan hyaluronic acid');
-                recommendations.push('Hindari sabun wajah yang mengandung sulfat keras');
-                recommendations.push('Gunakan facial oil atau sleeping mask di malam hari');
-                recommendations.push('Minum air putih minimal 8 gelas per hari');
-            } else if (result.skinType === 'Normal') {
-                recommendations.push('Pertahankan rutinitas perawatan dasar: cleanser, toner, moisturizer');
-                recommendations.push('Gunakan pelembab ringan yang sesuai dengan cuaca');
-                recommendations.push('Lakukan eksfoliasi ringan 1-2x seminggu');
-            } else if (result.skinType === 'Kombinasi') {
-                recommendations.push('Gunakan produk yang balance untuk kulit kombinasi');
-                recommendations.push('Fokus area T-zone dengan oil control, area kering dengan moisturizer');
-                recommendations.push('Pertimbangkan multi-masking untuk area berbeda');
-            }
-
-            // Acne recommendations
-            if (result.acne !== 'Tidak Ada') {
-                recommendations.push('Gunakan produk dengan benzoyl peroxide atau salicylic acid untuk jerawat');
-                recommendations.push('Hindari menyentuh wajah dengan tangan kotor');
-                if (result.acne === 'Sedang' || result.acne === 'Parah') {
-                    recommendations.push('Konsultasi dengan dermatologis untuk perawatan profesional');
-                    recommendations.push('Pertimbangkan treatment seperti chemical peeling atau laser');
+            // Tambahan prosedur untuk kulit sensitif jika terdeteksi kondisi khusus
+            if (result.acne !== 'Tidak Ada' || result.poreSize === 'Besar') {
+                procedureHTML += `
+                    <div style="margin-top: 25px; padding-top: 20px; border-top: 2px solid #f5ebe5;">
+                        <h4 style="color: #5a4a42; margin-bottom: 15px; font-size: 1.1em;">⚠️ Catatan Penting untuk Kondisi Khusus</h4>
+                        <ul style="line-height: 1.8; color: #7a6a5e; padding-left: 20px;">
+                `;
+                
+                if (result.acne !== 'Tidak Ada') {
+                    procedureHTML += `
+                        <li><strong>Untuk Jerawat:</strong> Hindari memencet jerawat sendiri. Lakukan ekstraksi oleh profesional. Gunakan produk dengan asam salisilat atau benzoil peroksida.</li>
+                    `;
                 }
+                
+                if (result.poreSize === 'Besar') {
+                    procedureHTML += `
+                        <li><strong>Untuk Pori Besar:</strong> Gunakan clay mask 2x seminggu dan produk dengan niacinamide untuk mengecilkan pori.</li>
+                    `;
+                }
+                
+                procedureHTML += `
+                        </ul>
+                    </div>
+                `;
             }
-
-            // Pore size recommendations
-            if (result.poreSize === 'Besar') {
-                recommendations.push('Gunakan clay mask 2x seminggu untuk mengecilkan pori-pori');
-                recommendations.push('Aplikasikan produk dengan niacinamide untuk memperbaiki tekstur kulit');
-                recommendations.push('Lakukan double cleansing untuk membersihkan pori secara mendalam');
-            }
-
-            // Wrinkle recommendations
-            if (result.wrinkles === 'Terdeteksi') {
-                recommendations.push('Gunakan serum anti-aging dengan retinol atau peptide');
-                recommendations.push('Aplikasikan eye cream khusus untuk area mata');
-                recommendations.push('Tingkatkan asupan antioksidan dan vitamin C');
-                recommendations.push('Pertimbangkan treatment profesional seperti microneedling');
-            }
-
-            // General recommendations
-            recommendations.push('Gunakan sunscreen SPF 30+ setiap hari, bahkan di dalam ruangan');
-            recommendations.push('Jaga pola tidur yang teratur (7-8 jam per malam)');
-            recommendations.push('Konsumsi makanan bergizi kaya akan vitamin dan mineral');
-
-            return recommendations;
+            
+            procedureHTML += '</div>';
+            
+            return procedureHTML;
         }
 
         function logout() {
